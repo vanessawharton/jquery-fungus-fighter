@@ -12,6 +12,8 @@ let starFireDamage = 25;
 let userAP = 100;
 
 function onReady() {
+    console.log("She's ready!");
+    render();
     $('#attack-btn arcane-sceptre').on('click', aSAttack);
     $('#attack-btn dragon-blade').on('click', dBAttack);
     $('#attack-btn entagle').on('click', eAttack);
@@ -19,19 +21,27 @@ function onReady() {
 }
 
 function aSAttack(){
+    console.log('AS Attack check', aSAttack);
     userAP - arcaneScepterCost;
     fungusHP - arcaneScepterDamage;
-    if userAP < 0, userAP = 0;
-    if fungusHP < 0, fungusHP = 0;
+    if (userAP < 0){
+        userAP = 0;
+    }
+    if (fungusHP < 0){
+        fungusHP = 0;
+    }
     render();
-    return "Attack with Arcane Scepter! Bzz!"
 }
 
 function dBAttack(){
     userAP - dragonBladeCost;
     fungusHP - dragonBladeDamage;
-    if userAP < 0, userAP = 0;
-    if fungusHP < 0, fungusHP = 0;
+    if (userAP < 0){
+        userAP = 0;
+    }
+    if (fungusHP < 0){
+        fungusHP = 0;
+    }
     render();
     return "Attack with Dragon Blade! Scorch!"
 }
@@ -39,8 +49,12 @@ function dBAttack(){
 function eAttack(){
     userAP - entangleCost;
     fungusHP - entangleDamage;
-    if userAP < 0, userAP = 0;
-    if fungusHP < 0, fungusHP = 0;
+    if (userAP < 0){
+        userAP = 0;
+    }
+    if (fungusHP < 0){
+        fungusHP = 0;
+    }
     render();
     return "Attack with Entangle! Whoa!"
 }
@@ -48,29 +62,37 @@ function eAttack(){
 function sFAttack(){
     userAP - starFireCost;
     fungusHP - starFireDamage;
-    if userAP < 0, userAP = 0;
-    if fungusHP < 0, fungusHP = 0;
+    if (userAP < 0){
+        userAP = 0;
+    }
+    if (fungusHP < 0){
+        fungusHP = 0;
+    }
     render();
     return "Attack with Star Fire! Sizzle!"
 }
 
 function render(){
     $('#ap-text').html(`
-        <p>
-            AP: ${userAP}
-        </p>
+        AP: ${userAP}
     `)
     $('#hp-text').html(`
-        <p>
-            HP: ${fungusHP}
-        </p>
+        HP: ${fungusHP}
     `)
 }
 
-// Render state changes to the DOM
+function youWin(){
+    if (fungusHP = 0){
+        $('#freaky-fungus-walk').replaceClass('freaky-fungus dead');
+    }
+}
+function youLose(){
+    if (userAP = 0){
+        $('freaky-fungus-walk').replaceClass('freaky-fungus jump');
 
-// Update the text above the attack buttons (eg, "100 AP")
-// Update the text above the enemy fungus (eg, "100 HP")
-// If the Freaky Fungus runs out of HP, the monster is dead and you win! Replace the walk class with a dead class on the freaky-fungus element, to make them fall over and die.
-// If you run out of AP, the monster wins and humanity is doomed 😢 Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
-// You may no longer attack, if AP is 0. Give all of the attack buttons a disabled attribute, so they may no longer be used.
+        $('#attack-btn arcane-sceptre').prop('disabled, true');
+        $('#attack-btn dragon-blade').prop('disabled, true');
+        $('#attack-btn entagle').prop('disabled, true');
+        $('#attack-btn star-fire').prop('disabled, true');
+    }
+}
