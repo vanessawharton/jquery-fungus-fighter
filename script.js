@@ -21,9 +21,9 @@ function onReady() {
 }
 
 function aSAttack(){
-    console.log('AS Attack check', aSAttack);
-    userAP - arcaneScepterCost;
-    fungusHP - arcaneScepterDamage;
+    console.log('AS Attack check');
+    userAP -= arcaneScepterCost;
+    fungusHP -= arcaneScepterDamage;
     if (userAP < 0){
         userAP = 0;
     }
@@ -31,11 +31,12 @@ function aSAttack(){
         fungusHP = 0;
     }
     render();
+    return "Attack with Arcane Scpeter! Bzz!"
 }
 
 function dBAttack(){
-    userAP - dragonBladeCost;
-    fungusHP - dragonBladeDamage;
+    userAP -= dragonBladeCost;
+    fungusHP -= dragonBladeDamage;
     if (userAP < 0){
         userAP = 0;
     }
@@ -47,8 +48,8 @@ function dBAttack(){
 }
 
 function eAttack(){
-    userAP - entangleCost;
-    fungusHP - entangleDamage;
+    userAP -= entangleCost;
+    fungusHP -= entangleDamage;
     if (userAP < 0){
         userAP = 0;
     }
@@ -60,8 +61,8 @@ function eAttack(){
 }
 
 function sFAttack(){
-    userAP - starFireCost;
-    fungusHP - starFireDamage;
+    userAP -= starFireCost;
+    fungusHP -= starFireDamage;
     if (userAP < 0){
         userAP = 0;
     }
